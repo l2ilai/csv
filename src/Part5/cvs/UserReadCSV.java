@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserReadCSV {
+public class UserReadCSV implements UserReader {
     private final Path path;
     public UserReadCSV(Path path) {
         this.path = path;
@@ -27,8 +27,8 @@ public class UserReadCSV {
         }
         return list;
     }
-
-    protected User[] createUsers() {
+    @Override
+    public User[] read() {
         List<User> users = new ArrayList<>();
         String separator = "\\|";
         List<String> lines = parseCSV(path);

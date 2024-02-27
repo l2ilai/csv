@@ -3,8 +3,7 @@ package Part5.cvs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserEcoFilter {
-
+public class UserEcoFilter implements UserFilter {
     private final int maxConsumption;
     public UserEcoFilter(int maxConsumption) {
         this.maxConsumption = maxConsumption;
@@ -16,7 +15,8 @@ public class UserEcoFilter {
                 user.getElectroCount1() < maxConsumption &&
                 user.getElectroCount2() < maxConsumption);
     }
-    protected User[] filter(User[] users) {
+    @Override
+    public User[] filter(User[] users) {
 
         List<User> ecoUsers = new ArrayList<>();
         for (User user: users) {

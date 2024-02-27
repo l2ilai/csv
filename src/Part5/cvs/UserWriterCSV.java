@@ -4,14 +4,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class UserWriterCSV {
+public class UserWriterCSV implements UserWriter {
     private final File file;
 
     public UserWriterCSV(File file) {
         this.file = file;
     }
-
-    protected void writeToFile(User[] ecoUsers) {
+    @Override
+    public void writeToFile(User[] ecoUsers) {
         String title = "id|name|waterCount|gasCount1|gasCount2|electroCount1|electroCount2\n";
         try (FileOutputStream fileOutputStream = new FileOutputStream(file, true)) {
             fileOutputStream.write(title.getBytes());
